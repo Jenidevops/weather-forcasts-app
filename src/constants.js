@@ -13,4 +13,4 @@ const weatherBackgrounds = {
   default: 'from-blue-400 via-blue-500 to-blue-600'
 };
 
-export { API_KEY, API_BASE_URL, weatherBackgrounds };
+export { API_BASE_URL, weatherBackgrounds };

@@ -4,7 +4,7 @@ import SearchBar from './components/SearchBar';
 import ErrorMessage from './components/ErrorMessage';
 import WeatherCard from './components/WeatherCard';
 import SetupInstructions from './components/SetupInstructions';
-import { API_KEY, API_BASE_URL } from './constants';
+import { API_BASE_URL } from './constants';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -17,10 +17,6 @@ function App() {
       return;
     }
 
-    if (!API_KEY) {
-      setError('Please add your OpenWeatherMap API key in the code');
-      return;
-    }
 
     setLoading(true);
     setError('');
@@ -80,8 +76,7 @@ function App() {
           </div>
         ) : weather ? (
           <WeatherCard weather={weather} />
-        ) : !API_KEY ? (
-          <SetupInstructions />
+        ) : null
         ) : null}
       </main>
       </div>
