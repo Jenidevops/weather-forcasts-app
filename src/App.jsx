@@ -4,7 +4,7 @@ import SearchBar from './components/SearchBar';
 import ErrorMessage from './components/ErrorMessage';
 import WeatherCard from './components/WeatherCard';
 import SetupInstructions from './components/SetupInstructions';
-import { API_BASE_URL } from './constants';
+import { API_KEY, API_BASE_URL } from './constants';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -23,13 +23,9 @@ function App() {
     setWeather(null);
 
     try {
-      const response = await fetch(API_BASE_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ city: query })
-      });
+      const response = await fetch(
+        `${API_BASE_URL}/weather?q=${encodeURIComponent(query)}&appid=${API_KEY}&units=metric`
+      );
 
       if (!response.ok) {
         if (response.status === 404) {
@@ -76,7 +72,6 @@ function App() {
           </div>
         ) : weather ? (
           <WeatherCard weather={weather} />
-        ) : null
         ) : null}
       </main>
       </div>

@@ -1,6 +1,6 @@
-// Using serverless function to protect API key
-// API endpoint that will handle the weather request securely
-const API_BASE_URL = '/api/weather';
+// OpenWeather API configuration
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+const API_BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 const weatherBackgrounds = {
   Clear: 'from-yellow-400 via-orange-400 to-red-400',
@@ -13,4 +13,4 @@ const weatherBackgrounds = {
   default: 'from-blue-400 via-blue-500 to-blue-600'
 };
 
-export { API_BASE_URL, weatherBackgrounds };
+export { API_KEY, API_BASE_URL, weatherBackgrounds };
